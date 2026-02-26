@@ -1,0 +1,143 @@
+.scene {
+  --printer-w: 160px;
+  --printer-h: 120px;
+  width: var(--printer-w);
+  height: var(--printer-h);
+  position: relative;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
+}
+
+.printer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #e8e8ed 0%, #d1d1d6 100%);
+  border-radius: 8px;
+  border: 2px solid #c7c7cc;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.topBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: linear-gradient(180deg, #d1d1d6 0%, #b8b8bd 100%);
+  border-radius: 6px 6px 0 0;
+}
+
+.leftPillar,
+.rightPillar {
+  position: absolute;
+  top: 12px;
+  width: 10px;
+  height: calc(100% - 12px);
+  background: linear-gradient(90deg, #b8b8bd 0%, #a1a1a6 100%);
+  border-radius: 2px;
+}
+
+.leftPillar { left: 4px; }
+.rightPillar { right: 4px; }
+
+.bed {
+  position: absolute;
+  bottom: 10px;
+  left: 18px;
+  right: 18px;
+  height: 28px;
+  background: #1d1d1f;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.buildPlate {
+  position: absolute;
+  inset: 2px;
+  background: linear-gradient(135deg, #2c2c2e 0%, #1d1d1f 100%);
+  border-radius: 2px;
+  animation: buildPlateMove 4s ease-in-out infinite;
+}
+
+@keyframes buildPlateMove {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-2px); }
+  50% { transform: translateY(-4px); }
+  75% { transform: translateY(-2px); }
+}
+
+.layer {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #0071e3, transparent);
+  border-radius: 2px;
+  opacity: 0.9;
+  animation: layerGrow 4s ease-in-out infinite;
+}
+
+@keyframes layerGrow {
+  0%, 100% { width: 20%; opacity: 0.6; }
+  50% { width: 60%; opacity: 1; }
+}
+
+.gantry {
+  position: absolute;
+  top: 18px;
+  left: 14px;
+  right: 14px;
+  height: 8px;
+  background: linear-gradient(180deg, #a1a1a6 0%, #8e8e93 100%);
+  border-radius: 4px;
+  animation: gantryX 5s ease-in-out infinite;
+}
+
+@keyframes gantryX {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(20px); }
+  50% { transform: translateX(-15px); }
+  75% { transform: translateX(10px); }
+}
+
+.extruder {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 16px;
+  background: linear-gradient(180deg, #6e6e73 0%, #48484a 100%);
+  border-radius: 4px;
+  animation: extruderY 3s ease-in-out infinite;
+}
+
+@keyframes extruderY {
+  0%, 100% { top: 50%; }
+  50% { top: 120%; }
+}
+
+.nozzle {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #0071e3;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 113, 227, 0.6);
+  animation: nozzleGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes nozzleGlow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(0, 113, 227, 0.6); }
+  50% { opacity: 0.7; box-shadow: 0 0 14px rgba(0, 113, 227, 0.9); }
+}
